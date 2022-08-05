@@ -1,5 +1,16 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+
+from notes.forms import AddNoteForm
 
 
 def index(request):
-    return HttpResponse("Notes index view")
+    notes = []
+    if request.method == "POST":
+        form = AddNoteForm(request.POST)
+        if form.is_valid():
+            # Create new DB record
+            pass
+    else:
+        form = AddNoteForm()
+    return render(request, "index.html", {"notes": notes, "form": form})
+
