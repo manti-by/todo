@@ -30,4 +30,5 @@ if __name__ == "__main__":
     response = client.post(base_url, data={"title": "test", "text": "test"}, follow=True)
     assert response.status_code == 200
 
+    user.delete()
     print("All tests have passed")
